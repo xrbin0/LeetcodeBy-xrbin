@@ -21,7 +21,7 @@ public:
     int nNode;
     vector<Node*> self;
     vector <vector<Node*>> res;
-    Node* cloneGraph(Node* node) {
+    Node* cloneGraph(Node* node) {//
         nNode = 0;
         tra(node);
         Node **r = new Node*[nNode];
