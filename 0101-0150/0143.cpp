@@ -10,7 +10,7 @@ struct ListNode {
 };
 
 class Solution {
-public://将链表砍成前后两段，然后将后面一段翻转，然后再逐个拼接。
+public:
     void reorderList(ListNode* head) {
         if(head == NULL || head->next == NULL) return ;
         ListNode* AdditionalHead1 = new ListNode(0);
@@ -20,18 +20,15 @@ public://将链表砍成前后两段，然后将后面一段翻转，然后再�
         ListNode* temp = NULL;
         while(true){
             fast = fast->next;
-            slow = slow->next;
             if(!fast) break;
             fast = fast->next;
             if(!fast) break;
+            slow = slow->next;
         }
-        temp = head;
-        while(true){
-            if(temp->next == slow){
-                temp->next = NULL; break;
-            }
-            temp = temp->next;
-        }
+        temp = slow;
+        slow = slow->next;
+        temp->next = NULL;
+        
         slow = reversal(slow);
         fast = NULL;
         while(slow != NULL){
